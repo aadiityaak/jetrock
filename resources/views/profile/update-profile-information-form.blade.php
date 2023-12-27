@@ -5,6 +5,8 @@
 
     <x-slot name="description">
         {{ __('Update your account\'s profile information and email address.') }}
+        <br>
+        {{ __('Your current role is:') }} <strong>{{ auth()->user()->role }}</strong>
     </x-slot>
 
     <x-slot name="form">

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/billing', [BillingController::class, 'index'])->name('billing.index');
+
 });
