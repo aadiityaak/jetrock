@@ -28,5 +28,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/billing', [BillingController::class, 'index'])->name('billing.index');
-
 });
