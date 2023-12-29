@@ -7,7 +7,6 @@
 // bootstrap.js
 import axios from "axios";
 import jQuery from "jquery";
-import "datatables.net";
 
 window.axios = axios;
 window.$ = jQuery;

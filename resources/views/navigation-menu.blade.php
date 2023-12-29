@@ -20,6 +20,11 @@
                             {{ __('Billing') }}
                         </x-nav-link>
                     @endif
+                    @if(auth()->check() && (auth()->user()->role === 'admin'))
+                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

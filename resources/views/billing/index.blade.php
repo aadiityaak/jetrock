@@ -67,6 +67,9 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
                                 </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 text-gray-800 dark:text-gray-400 dark:bg-gray-800 dark:divide-gray-700">
@@ -124,7 +127,7 @@
                     </table>
                 </div>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 text-gray-700 dark:text-gray-400">
                 {{ $csMainProjectData->links() }}
             </div>
         </div>

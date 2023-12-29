@@ -21,6 +21,11 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('role')->default('user');
+            $table->string('alamat')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('tanggal_masuk')->nullable();
+            $table->string('kode_karyawan')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
