@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="flex items-center justify-end">
-                    <button type="submit" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Update User</button>
+                        <button type="submit" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Update User</button>
                     </div>
                 </form>
             </div>

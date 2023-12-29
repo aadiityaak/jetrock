@@ -18,47 +18,19 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Nama Web
+                                    Data Web
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Paket
+                                    Tanggal
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Deskripsi
+                                    Biaya
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Tanggal Masuk
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Tanggal Deadline
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Total Biaya
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Dibayar
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Hp
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Hp Ads
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Wa
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Email
+                                    Kontak
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
@@ -66,62 +38,72 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
+                                    Aksi
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 text-gray-800 dark:text-gray-400 dark:bg-gray-800 dark:divide-gray-700">
+                        <tbody class="divide-y divide-gray-200 text-gray-800 dark:text-gray-400 dark:divide-gray-700">
                             @foreach ($csMainProjectData as $csMainProject)
-                                <tr>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProjectData->firstItem() + $loop->index }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->nama_web }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->nama_paket }}
-                                    </td>
-                                    <td class="px-6 py-4  max-w-[300px]">
-                                        {{ $csMainProject->deskripsi }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->tgl_masuk }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->tgl_deadline }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->biaya }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->dibayar }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->hp }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->hpads }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->kurang }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->wa }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->email }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        {{ $csMainProject->dikerjakan_oleh }}
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        <a href="#"
-                                            class="text-blue-500 hover:text-blue-700">Edit</a>
-                                    </td>
-                                </tr>
+
+                            <tr class="{{ $loop->odd ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700' }}">
+                                <td class="px-6 py-4 align-top">
+                                    {{ $csMainProjectData->firstItem() + $loop->index }}
+                                </td>
+                                <td class="px-6 py-4 align-top max-w-[200px]">
+                                    <b>{{ $csMainProject->nama_web }}</b>
+                                    <br>
+                                    {{ $csMainProject->nama_paket }}
+                                    {{ $csMainProject->deskripsi }}
+                                </td>
+                                <td class="px-6 py-4 align-top">
+                                    Masuk :
+                                    {{ dateToDMY($csMainProject->tgl_masuk) }}
+                                    <br>
+                                    Deadline :
+                                    {{ dateToDMY($csMainProject->tgl_deadline) }}
+                                </td>
+                                <td class="px-6 py-4 align-top">
+                                    Biaya :
+                                    {{ rupiah($csMainProject->biaya) }}
+                                    <br>
+                                    Dibayar :
+                                    {{ rupiah($csMainProject->dibayar) }}
+                                </td>
+                                <td class="px-6 py-4 align-top max-w-[200px]">
+                                    {!! $csMainProject->hp ? 'HP: '.$csMainProject->hp.'<br>' : '' !!}
+                                    {!! $csMainProject->hpads ? 'HP Ads: '.$csMainProject->hpads .'<br>' : '' !!}
+                                    {!! $csMainProject->wa ? 'WA: '.$csMainProject->wa .'<br>' : '' !!}
+                                    {!! $csMainProject->email ? 'Email: '.$csMainProject->email : '' !!}
+                                </td>
+                                <td class="px-6 py-4 align-top">
+                                @php
+                                    // Menggunakan preg_match_all untuk mendapatkan semua pasangan kode_karyawan dan angka
+                                    preg_match_all('/(\d+)\[(\d+)\]/', $csMainProject->dikerjakan_oleh, $matches, PREG_SET_ORDER);
+
+                                    // Menyimpan informasi user untuk setiap pasangan kode_karyawan dan angka
+                                    $users = [];
+                                    foreach ($matches as $match) {
+                                        $kode_karyawan = $match[1];
+                                        $persentase = $match[2];
+
+                                        // Query ke tabel users untuk mendapatkan informasi user berdasarkan kode_karyawan
+                                        $user = \App\Models\User::where('kode_karyawan', $kode_karyawan)->first();
+
+                                        // Menyimpan informasi user
+                                        if ($user) {
+                                            $users[] = ['name' => $user->name, 'persentase' => $persentase];
+                                        }
+                                    }
+                                @endphp
+
+                                @foreach ($users as $user)
+                                    {{ $user['name'] }} ({{ $user['persentase'] }}%)<br>
+                                @endforeach
+                                </td>
+                                <td class="px-6 py-4 align-top">
+                                    <a href="#" class="px-3 py-1 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Edit</a>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

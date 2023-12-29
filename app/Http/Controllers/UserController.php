@@ -77,7 +77,7 @@ class UserController extends Controller
             'no_hp' => 'nullable|string|max:255',
             'tanggal_masuk' => 'nullable|string|max:255',
             'kode_karyawan' => 'nullable|string|max:255',
-            'role' => 'required|in:admin,user', // Hanya boleh 'admin' atau 'user'
+            'role' => 'required|in:admin,user,pm,pemilik,keuangan,finance,webmastercustom,webmasterbiasa,user,support,billing',
             'status' => 'required|in:active,inactive',
         ], [
             'role.in' => 'Role must be either "admin" or "user"',
