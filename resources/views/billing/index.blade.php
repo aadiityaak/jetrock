@@ -9,73 +9,49 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead class="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    ID
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Data Web
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Tanggal
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Biaya
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Kontak
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Dikerjakan oleh
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
-                                    Aksi
-                                </th>
-                            </tr>
-                        </thead>
+                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                        
+                        <x-table-header :columns="['ID', 'Data Web', 'Tanggal', 'Biaya', 'Kontak', 'Dikerjakan oleh', 'Aksi']" />
+
                         <tbody class="divide-y divide-gray-200 text-gray-800 dark:text-gray-400 dark:divide-gray-700">
                             @foreach ($csMainProjectData as $csMainProject)
 
                             <tr class="{{ $loop->odd ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700' }}">
-                                <td class="px-6 py-4 align-top">
+                                <td class="px-4 py-3 align-top">
                                     {{ $csMainProjectData->firstItem() + $loop->index }}
                                 </td>
-                                <td class="px-6 py-4 align-top max-w-[200px]">
+                                <td class="px-4 py-3 align-top max-w-[200px]">
+                                    <b>{{ $csMainProject->jenis }}</b>
+                                    <br>
                                     <b>{{ $csMainProject->nama_web }}</b>
                                     <br>
-                                    {{ $csMainProject->nama_paket }}
+                                    <b>{{ $csMainProject->nama_paket }}</b>
+                                    <br>
                                     {{ $csMainProject->deskripsi }}
                                 </td>
-                                <td class="px-6 py-4 align-top">
+                                <td class="px-4 py-3 align-top">
                                     Masuk :
                                     {{ dateToDMY($csMainProject->tgl_masuk) }}
                                     <br>
                                     Deadline :
                                     {{ dateToDMY($csMainProject->tgl_deadline) }}
                                 </td>
-                                <td class="px-6 py-4 align-top">
+                                <td class="px-4 py-3 align-top">
+                                    {!! $csMainProject->trf ? 'TRF: '.$csMainProject->trf.'<br>' : '' !!}
                                     Biaya :
                                     {{ rupiah($csMainProject->biaya) }}
                                     <br>
                                     Dibayar :
                                     {{ rupiah($csMainProject->dibayar) }}
                                 </td>
-                                <td class="px-6 py-4 align-top max-w-[200px]">
+                                <td class="px-4 py-3 align-top max-w-[200px]">
                                     {!! $csMainProject->hp ? 'HP: '.$csMainProject->hp.'<br>' : '' !!}
-                                    {!! $csMainProject->hpads ? 'HP Ads: '.$csMainProject->hpads .'<br>' : '' !!}
+                                    {!! $csMainProject->telegram ? 'Telegram: '.$csMainProject->telegram .'<br>' : '' !!}
                                     {!! $csMainProject->wa ? 'WA: '.$csMainProject->wa .'<br>' : '' !!}
+                                    {!! $csMainProject->hpads ? 'HP Ads: '.$csMainProject->hpads .'<br>' : '' !!}
                                     {!! $csMainProject->email ? 'Email: '.$csMainProject->email : '' !!}
                                 </td>
-                                <td class="px-6 py-4 align-top">
+                                <td class="px-4 py-3 align-top">
                                 @php
                                     // Menggunakan preg_match_all untuk mendapatkan semua pasangan kode_karyawan dan angka
                                     preg_match_all('/(\d+)\[(\d+)\]/', $csMainProject->dikerjakan_oleh, $matches, PREG_SET_ORDER);
@@ -100,8 +76,8 @@
                                     {{ $user['name'] }} ({{ $user['persentase'] }}%)<br>
                                 @endforeach
                                 </td>
-                                <td class="px-6 py-4 align-top">
-                                    <a href="#" class="px-3 py-1 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Edit</a>
+                                <td class="px-4 py-3 align-top">
+                                    <x-a-button href="#" class="ml-3">Edit</x-a-button>
                                 </td>
                             </tr>
                             @endforeach

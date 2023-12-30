@@ -16,55 +16,56 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Name</label>
-                        <input type="text" name="name" id="name" value="{{ $user->name }}" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="name">Name</x-label>
+                        <x-input id="name" name="name" :value="$user->name" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
-                        <input type="email" name="email" id="email" value="{{ $user->email }}" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="email">Email</x-label>
+                        <x-input id="email" name="email" :value="$user->email" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Alamat</label>
-                        <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">{{ $user->alamat }}</textarea>
+                        <x-label for="alamat">Alamat</x-label>
+                        <x-textarea id="alamat" name="alamat">{{ $user->alamat }}</x-textarea>
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">No HP</label>
-                        <input type="text" name="no_hp" id="no_hp" value="{{ $user->no_hp }}" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="no_hp">No. HP</x-label>
+                        <x-input id="no_hp" name="no_hp" :value="$user->no_hp" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Tanggal Masuk</label>
-                        <input type="date" name="tanggal_masuk" id="tanggal_masuk" value="{{ $user->tanggal_masuk }}" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="tanggal_masuk">Tgl. Masuk</x-label>
+                        <x-input id="tanggal_masuk" name="tanggal_masuk" type="date" :value="$user->tanggal_masuk" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Kode Karyawan</label>
-                        <input type="text" name="kode_karyawan" id="kode_karyawan" value="{{ $user->kode_karyawan }}" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="kode_karyawan">Kode Karyawan</x-label>
+                        <x-input id="kode_karyawan" name="kode_karyawan" :value="$user->kode_karyawan" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Role</label>
-                        <select name="role" id="role" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="role">Role</x-label>
+                        <x-select name="role" id="role">
                             @foreach ($roles as $role)
                                 <option value="{{ $role }}" {{ $user->role == $role ? 'selected' : '' }}>{{ ucfirst($role) }}</option>
                             @endforeach
-                        </select>
+                        </x-select>
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Status Karyawan</label>
-                        <select name="status" id="status" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="status">Status</x-label>
+                        <x-select name="status" id="status">
                             @foreach ($statuses as $status)
                                 <option value="{{ $status }}" {{ $user->status == $status ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                             @endforeach
-                        </select>
+                        </x-select>
                     </div>
 
                     <div class="flex items-center justify-end">
-                        <button type="submit" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Update User</button>
+                        <x-a-button href="{{ route('users.index') }}">{{ __('Cancel') }}</x-a-button>
+                        <x-button type="submit" class="ml-3">{{ __('Update User') }}</x-button>
                     </div>
                 </form>
             </div>

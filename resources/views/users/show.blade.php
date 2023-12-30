@@ -38,12 +38,8 @@
 
                 <!-- Tautan untuk kembali ke halaman daftar pengguna -->
                 <div class="mt-4">
-                    <a href="{{ route('users.index') }}" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md mr-2">
-                        List User
-                    </a>
-                    <a href="{{ route('users.edit', $user->id) }}" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">
-                        Edit
-                    </a>
+                    <x-a-button href="{{ route('users.index') }}">{{ __('Back to Users') }}</x-a-button>
+                    <x-a-button href="{{ route('users.edit', $user->id) }}" class="ml-3">{{ __('Edit User') }}</x-a-button>
                 </div>
             </div>
         </div>

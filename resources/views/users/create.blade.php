@@ -15,36 +15,37 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Name</label>
-                        <input type="text" value="{{ old('name') }}" name="name" id="name" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="name">Name</x-label>
+                        <x-input id="name" name="name" :value="old('name')" required autofocus />
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
-                        <input type="email" value="{{ old('email') }}" name="email" id="email" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="email">Email</x-label>
+                        <x-input id="email" name="email" :value="old('email')" required />
                     </div>
 
                     <div class="mb-4">
-                        <label for="role" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Role</label>
-                        <select name="role" id="role" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="role">Role</x-label>
+                        <x-select name="role" id="role">
                             @foreach ($roles as $role)
                                 <option value="{{ $role }}" {{ old('role') == $role ? 'selected' : '' }}>{{ ucfirst($role) }}</option>
                             @endforeach
-                        </select>
+                        </x-select>
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Password</label>
-                        <input type="password" name="password" id="password" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="password">Password</x-label>
+                        <x-input id="password" name="password" type="password" required autocomplete="new-password" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Confirm Password</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" class="mt-1 p-2 w-full border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        <x-label for="password_confirmation">Confirm Password</x-label>
+                        <x-input id="password_confirmation" name="password_confirmation" type="password" required />
                     </div>
 
                     <div class="flex items-center justify-end">
-                        <button type="submit" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Create User</button>
+                        <x-a-button href="{{ route('users.index') }}">{{ __('Cancel') }}</x-a-button>
+                        <x-button type="submit" class="ml-3">{{ __('Create User') }}</x-button>
                     </div>
                 </form>
             </div>

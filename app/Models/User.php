@@ -32,6 +32,7 @@ class User extends Authenticatable
         'kode_karyawan',
         'tanggal_masuk',
         'status',
+        'role',
     ];
 
     /**

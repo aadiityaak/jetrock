@@ -11,13 +11,13 @@
 
                 @if(auth()->check() && auth()->user()->role == 'admin')
                     <div class="text-right mb-4">
-                        <a href="{{ route('users.create') }}" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Add User</a>
+                        <x-a-button href="{{ route('users.create') }}">{{ __('Add User') }}</x-a-button>
                     </div>
                 @endif
 
                 <x-validation-errors class="mb-4" />
                 
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-gray-700 dark:text-gray-400">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-gray-700 dark:text-gray-400 text-sm">
                     <thead>
                         <tr>
                             <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left font-semibold text-sm text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
@@ -44,13 +44,13 @@
                                 </td>
                                 @if(auth()->check() && auth()->user()->role == 'admin')
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="{{ route('users.edit', $user->id) }}" class="px-4 py-2 bg-gray-600 dark:bg-gray-400 hover:bg-gray-700 text-white dark:text-gray-800 dark:hover:bg-gray-500 rounded-md">Edit</a>
+                                        <x-a-button href="{{ route('users.edit', $user->id) }}" class="ml-2">Edit</x-a-button>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="px-4 py-2 bg-gray-900 dark:bg-gray-600 hover:bg-gray-700 text-red-400 dark:hover:bg-gray-500 rounded-md">Delete</button>
+                                            <x-button-danger type="submit">Delete</x-button>
                                         </form>
                                     </td>
                                 @endif
