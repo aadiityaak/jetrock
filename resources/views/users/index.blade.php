@@ -18,18 +18,16 @@
                 <x-validation-errors class="mb-4" />
                 
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-gray-700 dark:text-gray-400 text-sm">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left font-semibold text-sm text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left font-semibold text-sm text-gray-500 dark:text-gray-300 uppercase tracking-wider">Email</th>
-                            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left font-semibold text-sm text-gray-500 dark:text-gray-300 uppercase tracking-wider">Role</th>
-                            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left font-semibold text-sm text-gray-500 dark:text-gray-300 uppercase tracking-wider">Kontak</th>
-                            @if(auth()->check() && auth()->user()->role == 'admin')
-                                <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700"></th>
-                                <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700"></th>
-                            @endif
-                        </tr>
-                    </thead>
+                    @php
+                        $isAdmin = auth()->check() && auth()->user()->role == 'admin';
+                        $columns = ['Nama', 'Email', 'Role', 'Kontak'];
+                        if ($isAdmin) {
+                            $columns[] = 'Edit';
+                            $columns[] = 'Delete';
+                        }
+                    @endphp
+                    <x-table-header :columns="$columns" />
+
                     <tbody>
                         @forelse ($users as $user)
                             <tr class="{{ $loop->odd ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700' }}">
