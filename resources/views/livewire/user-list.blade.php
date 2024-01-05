@@ -11,6 +11,8 @@
                 <tr>
                     <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-left">Nama</th>
                     <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-left">Alamat</th>
+                    <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-left">Role</th>
+                    <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-left">Tindakan</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,11 +20,14 @@
                     <tr class="">
                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">{{ $user->name }}</td>
                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">{{ $user->alamat }}</td>
+                        <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">{{ $user->role }}</td>
+                        <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+                            @livewire('edit-user', ['user' => $user])
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    
-
 </div>
+
