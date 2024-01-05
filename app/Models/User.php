@@ -58,4 +58,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    const ROLES = [
+        'admin', 'pemilik', 'webmaster_custom', 'webmaster_biasa',
+        'finance', 'keuangan', 'revisi', 'support', 'pm'
+    ];
+
+    public function isRole($role)
+    {
+        return $this->role === $role;
+    }
 }
