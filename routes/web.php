@@ -72,4 +72,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
 });
