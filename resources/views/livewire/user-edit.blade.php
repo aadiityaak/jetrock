@@ -1,48 +1,20 @@
 <div>
     <form wire:submit.prevent="update">
-        <div class="mb-4">
-            <label for="name" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">Nama:</label>
-            <input wire:model="name" type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            @error('name') <p class="text-red-500 text-xs italic">{{ $message }}</p> @enderror
-        </div>
 
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">Email:</label>
-            <input wire:model="email" type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled">
-        </div>
-
-        <div class="mb-4">
-            <label for="alamat" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">Alamat:</label>
-            <textarea wire:model="alamat" id="alamat" name="alamat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-            @error('alamat') <p class="text-red-500 text-xs italic">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="mb-4">
-            <label for="no_hp" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">No. HP:</label>
-            <input wire:model="no_hp" type="text" id="no_hp" name="no_hp" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            @error('no_hp') <p class="text-red-500 text-xs italic">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="mb-4">
-            <label for="id_karyawan" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">ID Karyawan:</label>
-            <input wire:model="id_karyawan" for="id_karyawan" type="number" id="id_karyawan" name="id_karyawan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            @error('id_karyawan') <p class="text-red-500 text-xs italic">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="mb-4">
-            <label for="role" class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2">Role:</label>
-            <select wire:model="role" id="role" name="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                @foreach($roles as $roleOption)
-                    <option value="{{ $roleOption }}" {{ $roleOption == $user->role ? 'selected' : '' }}>{{ ucfirst($roleOption) }}</option>
-                @endforeach
-            </select>
-        </div>
+        <x-input-basic id="name" name="name" label="Nama" model="name" :error="$errors->first('name')" />
+        <x-input-basic id="email" name="email" label="Email" model="email" :error="$errors->first('email')" />
+        <x-input-basic id="alamat" name="alamat" label="Alamat" model="alamat" type="textarea" :error="$errors->first('alamat')" />
+        <x-input-basic id="no_hp" name="no_hp" label="No. HP" model="no_hp" :error="$errors->first('no_hp')" />
+        <x-input-basic id="id_karyawan" name="id_karyawan" label="ID Karyawan" model="id_karyawan" :error="$errors->first('id_karyawan')" />
+        <x-input-basic id="role" name="role" label="Role" model="role" type="select" :error="$errors->first('role')" >
+            @foreach($roles as $roleOption)
+                <option value="{{ $roleOption }}" {{ $roleOption == $user->role ? 'selected' : '' }}>{{ ucfirst($roleOption) }}</option>
+            @endforeach
+        </x-input-basic>
 
         <div class="flex items-center justify-between">
-            <a href="{{ route('users.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Kembali</a>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                Simpan Perubahan
-            </button>
+            <x-a-button href="{{ route('users.index') }}" type="secondary">Kembali</x-a-button>
+            <x-button-basic type="submit" color="primary">Simpan</x-button-basic>
         </div>
     </form>
 </div>

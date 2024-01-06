@@ -8,9 +8,9 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div x-data="{ openModal: false }">
-                <button @click="openModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Tambah Pengguna
-                </button>
+                <x-button-basic @click="openModal = true" color="primary">
+                    Tambah Karyawan
+                </x-button-basic>
 
                 <div x-show="openModal" x-cloak @click.away="openModal = false" class="fixed inset-0 overflow-y-auto z-50">
                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

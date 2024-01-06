@@ -38,13 +38,12 @@ class UserEdit extends Component
         $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email,' . $this->user->id,
-            'alamat' => 'required|min:3',
+            'alamat' => 'nullable',
             'id_karyawan' => 'required|integer',
             'no_hp' => 'nullable',
             'role' => 'required',
         ], [
             'name.required' => 'Nama harus diisi',
-            'alamat.required' => 'Alamat harus diisi',
             'id_karyawan.required' => 'ID Karyawan harus diisi',
             'id_karyawan.integer' => 'ID Karyawan harus angka',
             'role.required' => 'Role harus diisi',
