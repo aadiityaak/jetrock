@@ -41,7 +41,6 @@ class UserCreate extends Component
         ]);
 
         $this->reset();
-
         session()->flash('success', 'User created successfully');
     }
 }

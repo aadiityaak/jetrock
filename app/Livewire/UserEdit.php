@@ -2,21 +2,31 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class UserEdit extends Component
 {
+    public $user_id;
     public $name;
     public $email;
     public $alamat;
     public $id_karyawan;
+    public $no_hp;
+    public $role;
+    public $roles = ['admin', 'pemilik', 'pm', 'webmaster_custom', 'webmaster_biasa', 'support', 'revisi', 'user'];
+    public $user;
+
     public function mount($user)
     {
         $this->user = $user;
+        $this->user_id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->alamat = $user->alamat;
         $this->id_karyawan = $user->id_karyawan;
+        $this->no_hp = $user->no_hp;
+        $this->role = $user->role;
     }
     public function render()
     {
@@ -27,19 +37,29 @@ class UserEdit extends Component
     {
         $this->validate([
             'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
             'alamat' => 'required|min:3',
             'id_karyawan' => 'required|integer',
+            'no_hp' => 'nullable',
+            'role' => 'required',
         ], [
             'name.required' => 'Nama harus diisi',
             'alamat.required' => 'Alamat harus diisi',
             'id_karyawan.required' => 'ID Karyawan harus diisi',
             'id_karyawan.integer' => 'ID Karyawan harus angka',
+            'role.required' => 'Role harus diisi',
         ]);
-        $this->user->update([
+        User::where([
+            'id' => $this->user->id
+        ])->update([
             'name' => $this->name,
+            'email' => $this->email,
             'alamat' => $this->alamat,
             'id_karyawan' => $this->id_karyawan,
+            'no_hp' => $this->no_hp,
+            'role' => $this->role
         ]);
+
         redirect()->route('users.index')->with('success', 'User berhasil diupdate');
     }
 }

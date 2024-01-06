@@ -14,4 +14,12 @@ class UserTable extends Component
         ]);
     }
 
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        session()->flash('success', 'User deleted successfully');
+    }
+
 }
