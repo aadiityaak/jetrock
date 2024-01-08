@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
+use App\Models\Role;
 use Livewire\Component;
 
 class Edit extends Component
@@ -13,18 +14,15 @@ class Edit extends Component
     public $alamat;
     public $id_karyawan;
     public $no_hp;
-    public $role;
     public $user;
-    public $roles = [
-        'admin' => 'Administrator',
-        'pemilik' => 'Pemilik',
-        'pm' => 'Project Manager',
-        'webmaster_custom' => 'Webmaster Custom',
-        'webmaster_biasa' => 'Webmaster Biasa',
-        'support' => 'Support',
-        'revisi' => 'Revisi',
-        'user' => 'User',
-    ];
+    public $roles;
+    public $role;
+    
+    public function __construct()
+    {
+        $this->roles = Role::all();
+    }
+    
     public function mount($user)
     {
         $this->user = $user;
@@ -52,6 +50,10 @@ class Edit extends Component
             'role' => 'required',
         ], [
             'name.required' => 'Nama harus diisi',
+            'name.min' => 'Nama minimal 3 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email harus valid',
+            'email.unique' => 'Email sudah terdaftar',
             'id_karyawan.required' => 'ID Karyawan harus diisi',
             'id_karyawan.integer' => 'ID Karyawan harus angka',
             'role.required' => 'Role harus diisi',

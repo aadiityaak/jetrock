@@ -74,4 +74,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::get('/users/role', [UserController::class, 'role'])->name('users.role');
 });

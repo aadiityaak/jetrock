@@ -4,20 +4,17 @@ namespace App\Livewire\User;
 
 use Livewire\Component;
 use App\Models\User;
+use App\Models\Role;
 
 class Table extends Component
 {
 
-    public $roles = [
-        'admin' => 'Administrator',
-        'pemilik' => 'Pemilik',
-        'pm' => 'Project Manager',
-        'webmaster_custom' => 'Webmaster Custom',
-        'webmaster_biasa' => 'Webmaster Biasa',
-        'support' => 'Support',
-        'revisi' => 'Revisi',
-        'user' => 'User',
-    ];
+    public $roles;
+
+    public function __construct()
+    {
+        $this->roles = Role::all();
+    }
     
     public function render()
     {
