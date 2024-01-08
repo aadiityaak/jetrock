@@ -21,7 +21,7 @@
                     {!! $user->email ? '<span>'.$user->email.'</span><br>' : '' !!}
                     {!! $user->alamat ? '<span>'.$user->alamat.'</span>' : '' !!}
                 </td>
-                <td class="border-b border-gray-300 dark:border-gray-700 p-2">{{ $user->role }}</td>
+                <td class="border-b border-gray-300 dark:border-gray-700 p-2">{{ $roles[$user->role] }}</td>
                 <td class="border-b border-gray-300 dark:border-gray-700 p-2">
                     <!-- modal untuk  delete confirm -->
                     <div x-data="{ openModal: false }">

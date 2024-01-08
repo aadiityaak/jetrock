@@ -53,7 +53,7 @@
 
                 <x-app.header />
 
-                <main class="grow">
+                <main class="grow text-sm">
                     {{ $slot }}
                 </main>
 

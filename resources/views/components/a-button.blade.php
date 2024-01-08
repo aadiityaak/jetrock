@@ -12,6 +12,6 @@
     $colorClass = $colors[$type] ?? $colors['primary'];
 @endphp
 
-<a href="{{ $href }}" {{ $attributes->merge(['class' => 'text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline ' . $colorClass]) }}>
+<a href="{{ $href }}" {{ $attributes->merge(['class' => 'text-white py-1 px-3 rounded focus:outline-none focus:shadow-outline ' . $colorClass]) }}>
     {{ $slot }}
 </a>

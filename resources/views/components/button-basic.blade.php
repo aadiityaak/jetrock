@@ -1,4 +1,4 @@
-@props(['color' => 'primary', 'click' => null])
+@props(['color' => 'primary', 'click' => null, 'type' => 'button'])
 
 @php
     $colors = [
@@ -12,6 +12,6 @@
     $colorClass = $colors[$color] ?? $colors['primary'];
 @endphp
 
-<button @if($click) wire:click="{{ $click }}" @endif type="button" {{ $attributes->merge(['class' => 'text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline ' . $colorClass]) }}>
+<button @if($click) wire:click="{{ $click }}" @endif type="{{ $type }}" {{ $attributes->merge(['class' => 'text-white py-1 px-3 rounded focus:outline-none focus:shadow-outline ' . $colorClass]) }}>
   {{ $slot }}
 </button>

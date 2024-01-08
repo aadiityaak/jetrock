@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class UserCreate extends Component
+class Create extends Component
 {
     public $name;
     public $email;
@@ -14,7 +14,7 @@ class UserCreate extends Component
 
     public function render()
     {
-        return view('livewire.user-create');
+        return view('livewire.user.create');
     }
 
     public function store() 

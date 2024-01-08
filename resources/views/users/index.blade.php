@@ -20,12 +20,12 @@
 
                         <!-- Modal -->
                         <div @click.away="openModal = false" class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                            @livewire('user-create')
+                            @livewire('user.create')
                         </div>
                     </div>
                 </div>
             </div>
-            @livewire('user-table')
+            @livewire('user.table')
         </div>
     </div>
 </x-app-layout>
