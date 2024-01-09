@@ -1,4 +1,43 @@
 <div class="container mx-auto mt-8">
+    <div x-data="{ openCreateModal: false }" class="mb-4">
+        <x-button-basic @click="openCreateModal = true" color="primary">
+            Tambah Karyawan
+        </x-button-basic>
+
+        <div x-show="openCreateModal" x-cloak @click.away="openCreateModal = false" class="fixed inset-0 overflow-y-auto z-50">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+
+                <!-- Modal -->
+                <div @click.away="openCreateModal = false" class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="container mx-auto mt-8">
+                    <form wire:submit.prevent="store" class="bg-white dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        
+                        <x-input-basic id="name" name="name" label="Nama" model="name" :error="$errors->first('name')" />
+                        <x-input-basic id="email" name="email" label="Email" model="email" :error="$errors->first('email')" />
+                        <x-input-basic id="password" name="password" label="Password" model="password" type="password" :error="$errors->first('password')" />
+                        
+                        <div class="flex items-center justify-between">
+                            <x-button-basic @click="openCreateModal = false" type="submit" color="primary">Simpan</x-button-basic>
+                        </div>
+                    </form>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if(session()->has('success'))
+    <div class="bg-green-100 border mb-5 border-green-400 dark:border-green-700 border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+    @endif
+
+
     <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-md rounded">
         <thead>
             <tr>

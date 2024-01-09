@@ -1,16 +1,16 @@
 <x-authentication-layout>
-    <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">{{ __('Create your Account') }} ✨</h1>
+    <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">{{ __('Buat Akun') }}</h1>
     <!-- Form -->
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="space-y-4">
             <div>
-                <x-label for="name">{{ __('Full Name') }} <span class="text-rose-500">*</span></x-label>
+                <x-label for="name">{{ __('Nama Lengkap') }} <span class="text-rose-500">*</span></x-label>
                 <x-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div>
-                <x-label for="email">{{ __('Email Address') }} <span class="text-rose-500">*</span></x-label>
+                <x-label for="email">{{ __('Email') }} <span class="text-rose-500">*</span></x-label>
                 <x-input id="email" type="email" name="email" :value="old('email')" required />
             </div>
 
@@ -25,14 +25,8 @@
             </div>
         </div>
         <div class="flex items-center justify-between mt-6">
-            <div class="mr-1">
-                <label class="flex items-center" name="newsletter" id="newsletter">
-                    <input type="checkbox" class="form-checkbox" />
-                    <span class="text-sm ml-2">Email me about product news.</span>
-                </label>
-            </div>
             <x-button>
-                {{ __('Sign Up') }}
+                {{ __('Daftar') }}
             </x-button>                
         </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -53,7 +47,7 @@
     <!-- Footer -->
     <div class="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
         <div class="text-sm">
-            {{ __('Have an account?') }} <a class="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+            {{ __('Have an account?') }} <a class="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="{{ route('login') }}">{{ __('Log In') }}</a>
         </div>
     </div>
 </x-authentication-layout>
