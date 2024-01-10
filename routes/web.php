@@ -71,8 +71,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('pages/utility/404');
     });
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('/users/role', [UserController::class, 'role'])->name('users.role');
+    // Route::middleware(['role:admin'])->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::get('/users/role', [UserController::class, 'role'])->name('users.role');
+    // });
+
 });

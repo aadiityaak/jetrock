@@ -2,13 +2,23 @@
 
 namespace App\Livewire\User;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Livewire\Component;
 
 class RoleTable extends Component
 {
+    public $id;
     public $name;
     public $description;
+
+    public function mount(Role $role = null)
+    {
+        if ($role) {
+            $this->id = $role->id;
+            $this->name = $role->name;
+            $this->description = $role->description;
+        }
+    }
 
     public function render()
     {
@@ -46,6 +56,15 @@ class RoleTable extends Component
 
     public function update($id)
     {
+        $this->validate([
+            'name' => 'required|max:255|min:2',
+            'description' => 'nullable',
+        ], [
+            'name.required' => 'Role Name wajib diisi',
+            'name.max' => 'Role Name maksimal 255 karakter',
+            'name.min' => 'Role Name minimal 3 karakter',
+        ]);
+
         $role = Role::find($id);
         $role->update([
             'name' => $this->name,
@@ -55,8 +74,10 @@ class RoleTable extends Component
         // return redirect()->route('users.role');
     }
 
-    public function destroy(Role $role)
+    public function destroy($id)
     {
+        $role = Role::find($id);
+
         // Cek apakah ada pengguna yang menggunakan role ini
         $usersWithRole = $role->users;
 

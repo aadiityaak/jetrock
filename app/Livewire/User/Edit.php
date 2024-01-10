@@ -3,7 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Livewire\Component;
 
 class Edit extends Component

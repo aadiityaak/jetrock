@@ -9,14 +9,14 @@
             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
             <div class="fixed inset-0 flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-gray-800 rounded-lg p-6 md:w-1/3">
-                    <form wire:submit.prevent="store">
+                    <form>
                         <x-input-basic id="name" name="name" label="Role Name" model="name" :error="$errors->first('name')" />
                         <x-input-basic id="description" name="description" type="textarea" label="Description" model="description" :error="$errors->first('description')" />
                         <div class="flex justify-end">
                             <x-button-basic color="secondary" class="me-2" text="Tutup" @click="openCreateModal = false">
                                 Tidak
                             </x-button-basic>
-                            <x-button-basic color="primary" text="Simpan" @click="openCreateModal = false">
+                            <x-button-basic color="primary" text="Simpan" @click="openCreateModal = false" wire:click="store">
                                 Simpan
                             </x-button-basic>
                         </div>
@@ -55,14 +55,14 @@
                                 <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                                 <div class="fixed inset-0 flex items-center justify-center p-4">
                                     <div class="bg-white dark:bg-gray-800 rounded-lg p-6 md:w-1/3">
-                                        <form wire:submit.prevent="update({{ $role->id }})">
+                                        <form>
                                             <x-input-basic id="name" name="name" label="Role Name" model="name" :error="$errors->first('name')" />
                                             <x-input-basic id="description" name="description" type="textarea" label="Description" model="description" :error="$errors->first('description')" />
                                             <div class="flex justify-end">
                                                 <x-button-basic color="secondary" class="me-2" text="Tutup" @click="openEditModal = false">
                                                     Tidak
                                                 </x-button-basic>
-                                                <x-button-basic color="primary" text="Simpan" @click="openEditModal = false">
+                                                <x-button-basic color="primary" text="Simpan" @click="openEditModal = false" wire:click="update({{ $role->id }})">
                                                     Simpan
                                                 </x-button-basic>
                                             </div>
