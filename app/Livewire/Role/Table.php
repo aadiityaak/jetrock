@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Role;
 
 use Spatie\Permission\Models\Role;
 use Livewire\Component;
 
-class RoleTable extends Component
+class Table extends Component
 {
     public $id;
     public $name;
@@ -22,7 +22,7 @@ class RoleTable extends Component
 
     public function render()
     {
-        return view('livewire.user.role-table', [
+        return view('livewire.role.table', [
             'roles' => Role::all(),
         ]);
     }
